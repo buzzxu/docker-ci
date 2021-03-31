@@ -1,5 +1,7 @@
 FROM buzzxu/docker-ci:java
 
+LABEL MAINTAINER buzzxu <downloadxu@163.com>
+
 RUN apk add --no-cache curl tar bash procps
 
 ARG MAVEN_VERSION=3.6.3
@@ -19,6 +21,6 @@ ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
 
-COPY settings.xml $USER_HOME_DIR/.m2
+COPY maven/settings.xml $USER_HOME_DIR/.m2
 
 CMD ["mvn"]

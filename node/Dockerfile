@@ -13,6 +13,4 @@ RUN rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* 
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-
 CMD [ "node" ]
