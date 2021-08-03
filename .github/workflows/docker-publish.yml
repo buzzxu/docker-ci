@@ -13,8 +13,8 @@ env:
 
 
 jobs:
-  build-push:
-    name: stable
+  stable:
+    name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -45,7 +45,8 @@ jobs:
           context: .
           push: true
           tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:stable
-    name: maven
+  maven:
+    name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
     permissions:
       packages: write
