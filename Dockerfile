@@ -1,6 +1,7 @@
 FROM docker:stable
 
 RUN apk add --update --no-cache \
-    git openssh sshpass rsync
+    git openssh sshpass rsync curl wget zip unzip fontconfig ttf-dejavu \
+    && rm -rf /var/lib/apt/lists/*
 
 CMD ["sh"]

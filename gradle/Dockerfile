@@ -8,8 +8,8 @@ ENV GRADLE_HOME /opt/gradle
 
 RUN set -o errexit -o nounset \
     && echo "Adding gradle user and group" \
-    && addgroup --system --gid 1000 gradle \
-    && adduser --disabled-password --system --ingroup gradle --uid 1000 --shell /bin/sh --home gradle \
+    && groupadd --system --gid 1000 gradle \
+    && useradd --system --gid gradle --uid 1000 --shell /bin/bash --create-home gradle \
     && mkdir /home/gradle/.gradle \
     && chown --recursive gradle:gradle /home/gradle \
     \
@@ -23,17 +23,11 @@ WORKDIR /home/gradle
 RUN apk add --update --no-cache \
         ttf-dejavu \
         fontconfig \
-        unzip \
-        wget \
         \
-        bzr \
-        git \
-        git-lfs \
-        openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
-ENV GRADLE_VERSION 6.8.3
-ARG GRADLE_DOWNLOAD_SHA256=7faa7198769f872826c8ef4f1450f839ec27f0b4d5d1e51bade63667cbccd205
+ENV GRADLE_VERSION 7.1.1
+ARG GRADLE_DOWNLOAD_SHA256=bf8b869948901d422e9bb7d1fa61da6a6e19411baa7ad6ee929073df85d6365d
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
