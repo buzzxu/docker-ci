@@ -68,12 +68,14 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: maven/
+          context: .
+          file: maven/Dockerfile
           push: true
           tags: buzzxu/docker-ci:maven
       - name: Build container image
         uses: docker/build-push-action@v2
         with:
-          context: maven/
+          context: .
+          file: maven/Dockerfile
           push: true
           tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:maven
