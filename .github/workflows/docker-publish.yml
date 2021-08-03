@@ -14,7 +14,7 @@ env:
 
 jobs:
   stable:
-    name: Push Docker image to multiple registries
+    name: Stable image
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -45,8 +45,44 @@ jobs:
           context: .
           push: true
           tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:stable
+  java:
+    needs: stable
+    name: Java image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: java/Dockerfile
+          push: true
+          tags: buzzxu/docker-ci:java
+      - name: Build container image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: java/Dockerfile
+          push: true
+          tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:java
   maven:
-    name: Push Docker image to multiple registries
+    needs: java
+    name: Maven image
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -79,3 +115,72 @@ jobs:
           file: maven/Dockerfile
           push: true
           tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:maven
+  gradle:
+    needs: java
+    name: Gradle image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: gradle/Dockerfile
+          push: true
+          tags: buzzxu/docker-ci:gradle
+      - name: Build container image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: gradle/Dockerfile
+          push: true
+          tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:gradle
+  node:
+    name: Node image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/Dockerfile
+          push: true
+          tags: buzzxu/docker-ci:node
+      - name: Build container image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/Dockerfile
+          push: true
+          tags: docker.pkg.github.com/${{ github.repository }}/docker-ci:node
