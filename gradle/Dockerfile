@@ -1,6 +1,4 @@
-FROM buzzxu/docker-ci:java
-
-LABEL MAINTAINER buzzxu <downloadxu@163.com>
+FROM eclipse-temurin:17-jdk
 
 CMD ["gradle"]
 
@@ -8,8 +6,8 @@ ENV GRADLE_HOME /opt/gradle
 
 RUN set -o errexit -o nounset \
     && echo "Adding gradle user and group" \
-    && addgroup --system --gid 1000 gradle \
-    && adduser -S gradle -G gradle --uid 1000 --shell /bin/bash --home gradle \
+    && groupadd --system --gid 1000 gradle \
+    && useradd --system --gid gradle --uid 1000 --shell /bin/bash --create-home gradle \
     && mkdir /home/gradle/.gradle \
     && chown --recursive gradle:gradle /home/gradle \
     \
@@ -20,11 +18,24 @@ VOLUME /home/gradle/.gradle
 
 WORKDIR /home/gradle
 
-RUN apk add --update --no-cache \
-        ttf-dejavu \
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends \
         fontconfig \
+        unzip \
+        wget \
         \
-    && rm -rf /var/lib/apt/lists/*
+        bzr \
+        git \
+        git-lfs \
+        openssh-client \
+    && rm -rf /var/lib/apt/lists/* \
+    \
+    && echo "Testing VCSes" \
+    && which bzr \
+    && which git \
+    && which git-lfs \
+    && which hg \
+    && which svn
 
 ENV GRADLE_VERSION 7.2
 ARG GRADLE_DOWNLOAD_SHA256=f581709a9c35e9cb92e16f585d2c4bc99b2b1a5f85d2badbd3dc6bff59e1e6dd
