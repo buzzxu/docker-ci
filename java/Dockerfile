@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-debian:17 AS jdk
+FROM azul/zulu-openjdk-alpine:17 AS jdk
 
 
 FROM buzzxu/docker-ci:stable
