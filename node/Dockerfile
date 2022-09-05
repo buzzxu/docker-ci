@@ -4,7 +4,7 @@ LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
 RUN apt-get update -qq && \ 
     apt-get upgrade -y && \
-    apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python && \
+    apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python make && \
     update-ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
