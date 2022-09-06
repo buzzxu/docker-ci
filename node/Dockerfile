@@ -6,6 +6,7 @@ RUN apt-get update -qq && \
     apt-get upgrade -y && \
     apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python build-essential && \
     update-ca-certificates && \
+    npm i -g node-gyp && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
