@@ -44,3 +44,33 @@ jobs:
           tags: |
             buzzxu/docker-ci:node
             ghcr.io/buzzxu/docker-ci:node
+  node-taro:
+    needs: node
+    name: Node taro
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/taro/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-taro
+            ghcr.io/buzzxu/docker-ci:node-taro
