@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16-bullseye-slim
 
 LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
