@@ -1,9 +1,11 @@
-FROM buzzxu/docker-ci:node
+FROM node:latest
 
 LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
 RUN apt-get update -qq && \ 
     apt-get upgrade -y && \
+    apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python build-essential && \
+    update-ca-certificates && \
     npm i -g node-gyp && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
     yarn global add @tarojs/cli && \
