@@ -1,10 +1,10 @@
-FROM node:16-bullseye-slim
+FROM node:slim
 
 LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
 RUN apt-get update -qq && \ 
     apt-get upgrade -y && \
-    apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python build-essential && \
+    apt-get install -qq -y --no-install-recommends git curl openssh-server sshpass rsync ca-certificates python3 build-essential && \
     update-ca-certificates && \
     npm i -g node-gyp && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
