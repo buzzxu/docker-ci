@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:lts-bullseye-slim
 
 LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
