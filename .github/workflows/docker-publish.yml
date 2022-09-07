@@ -72,7 +72,6 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:java
-            ghcr.io/buzzxu/docker-ci:java
   maven:
     needs: java
     name: Maven image
@@ -102,7 +101,6 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:maven
-            ghcr.io/buzzxu/docker-ci:maven
   gradle:
     needs: java
     name: Gradle image
@@ -132,4 +130,3 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:gradle
-            ghcr.io/buzzxu/docker-ci:gradle

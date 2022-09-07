@@ -43,7 +43,6 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:node
-            ghcr.io/buzzxu/docker-ci:node
   node-taro:
     needs: node
     name: Node taro
@@ -73,4 +72,3 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:node-taro
-            ghcr.io/buzzxu/docker-ci:node-taro
