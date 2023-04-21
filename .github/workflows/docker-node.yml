@@ -35,14 +35,44 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push to Docker Hub
+      - name: 16
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: node/Dockerfile
+          file: node/16/Dockerfile
           push: true
           tags: |
             buzzxu/docker-ci:node
+            ghcr.io/buzzxu/docker-ci:node
+            buzzxu/docker-ci:node-16
+            ghcr.io/buzzxu/docker-ci:node-16
+      - name: 18
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/18/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-18
+            ghcr.io/buzzxu/docker-ci:node-18
+      - name: 19
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/19/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-19
+            ghcr.io/buzzxu/docker-ci:node-19
+      - name: 20
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/20/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-20
+            ghcr.io/buzzxu/docker-ci:node-20
   node-taro:
     needs: node
     name: Node taro
@@ -64,11 +94,41 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push to Docker Hub
+      - name: 16
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: node/taro/Dockerfile
+          file: node/16/taro/Dockerfile
           push: true
           tags: |
             buzzxu/docker-ci:node-taro
+            ghcr.io/buzzxu/docker-ci:node-taro
+            buzzxu/docker-ci:node-taro-16
+            ghcr.io/buzzxu/docker-ci:node-taro-16
+      - name: 18
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/18/taro/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-taro-18
+            ghcr.io/buzzxu/docker-ci:node-taro-18
+      - name: 19
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/19/taro/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-taro-19
+            ghcr.io/buzzxu/docker-ci:node-taro-19
+      - name: 20
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: node/20/taro/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-taro-20
+            ghcr.io/buzzxu/docker-ci:node-taro-20

@@ -1,0 +1,26 @@
+FROM buzzxu/docker-ci:java-17
+
+LABEL MAINTAINER buzzxu <downloadxu@163.com>
+
+RUN apk add --no-cache curl tar bash procps
+
+ARG MAVEN_VERSION=3.9.1
+ARG USER_HOME_DIR="/root"
+ARG SHA=d3be5956712d1c2cf7a6e4c3a2db1841aa971c6097c7a67f59493a5873ccf8c8b889cf988e4e9801390a2b1ae5a0669de07673acb090a083232dbd3faf82f3e3
+ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
+  && curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+  && echo "${SHA}  /tmp/apache-maven.tar.gz" | sha512sum -c - \
+  && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 \
+  && rm -f /tmp/apache-maven.tar.gz \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
+  && mkdir $USER_HOME_DIR/.m2
+
+ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
+
+COPY maven/settings.xml $USER_HOME_DIR/.m2
+
+CMD ["mvn"]

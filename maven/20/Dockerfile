@@ -1,12 +1,12 @@
-FROM buzzxu/docker-ci:java
+FROM buzzxu/docker-ci:java-20
 
 LABEL MAINTAINER buzzxu <downloadxu@163.com>
 
 RUN apk add --no-cache curl tar bash procps
 
-ARG MAVEN_VERSION=3.8.6
+ARG MAVEN_VERSION=3.9.1
 ARG USER_HOME_DIR="/root"
-ARG SHA=f790857f3b1f90ae8d16281f902c689e4f136ebe584aba45e4b1fa66c80cba826d3e0e52fdd04ed44b4c66f6d3fe3584a057c26dfcac544a60b301e6d0f91c26
+ARG SHA=d3be5956712d1c2cf7a6e4c3a2db1841aa971c6097c7a67f59493a5873ccf8c8b889cf988e4e9801390a2b1ae5a0669de07673acb090a083232dbd3faf82f3e3
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
