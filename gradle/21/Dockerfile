@@ -22,18 +22,14 @@ RUN set -o errexit -o nounset \
     && echo "Installing VCSes" \
     && apk add --no-cache \
       git \
-      bzr \
       git-lfs \
-      mercurial \
       subversion \
     \
     && echo "Testing VCSes" \
-    && which bzr \ 
     && which git \
     && which git-lfs \
-    && which hg \
     && which svn
-    
+
 ENV GRADLE_VERSION 8.4
 ARG GRADLE_DOWNLOAD_SHA256=3e1af3ae886920c3ac87f7a91f816c0c7c436f276a6eefdb3da152100fef72ae
 RUN set -o errexit -o nounset \
