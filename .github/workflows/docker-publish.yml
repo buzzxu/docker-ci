@@ -104,17 +104,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 17
+      - name: 21
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: maven/17/Dockerfile
+          file: maven/21/Dockerfile
           push: true
           tags: |
             buzzxu/docker-ci:maven
             ghcr.io/buzzxu/docker-ci:maven
-            buzzxu/docker-ci:maven-17
-            ghcr.io/buzzxu/docker-ci:maven-17
+            buzzxu/docker-ci:maven-21
+            ghcr.io/buzzxu/docker-ci:maven-21
       - name: 20
         uses: docker/build-push-action@v2
         with:
