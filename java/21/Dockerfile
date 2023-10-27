@@ -10,7 +10,7 @@ COPY --from=jdk /opt/java/openjdk /opt/jdk/
 
 ENV TZ=Asia/Shanghai
 ENV LANG='C.UTF-8' LC_ALL='C.UTF-8'
-ENV JAVA_VERSION 17
+ENV JAVA_VERSION 21
 ENV JAVA_HOME=/opt/jdk \
     PATH="/opt/jdk/bin:$PATH"
 
