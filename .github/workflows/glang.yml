@@ -15,7 +15,7 @@ env:
 
 
 jobs:
-  node:
+  golang:
     name: Golang image
     runs-on: ubuntu-latest
     permissions:
@@ -35,7 +35,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 16
+      - name: debian
         uses: docker/build-push-action@v5
         with:
           context: .
