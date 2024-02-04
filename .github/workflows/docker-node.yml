@@ -1,4 +1,4 @@
-name: Docker Node
+name: Node CI
 
 on:
   push:
@@ -23,20 +23,20 @@ jobs:
       contents: read
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Log in to GitHub Docker Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 16
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/16/Dockerfile
@@ -47,7 +47,7 @@ jobs:
             buzzxu/docker-ci:node-16
             ghcr.io/buzzxu/docker-ci:node-16
       - name: 18
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/18/Dockerfile
@@ -56,7 +56,7 @@ jobs:
             buzzxu/docker-ci:node-18
             ghcr.io/buzzxu/docker-ci:node-18
       - name: 19
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/19/Dockerfile
@@ -65,7 +65,7 @@ jobs:
             buzzxu/docker-ci:node-19
             ghcr.io/buzzxu/docker-ci:node-19
       - name: 20
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/20/Dockerfile
@@ -82,20 +82,20 @@ jobs:
       contents: read
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Log in to GitHub Docker Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 16
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/16/taro/Dockerfile
@@ -106,7 +106,7 @@ jobs:
             buzzxu/docker-ci:node-taro-16
             ghcr.io/buzzxu/docker-ci:node-taro-16
       - name: 18
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/18/taro/Dockerfile
@@ -115,7 +115,7 @@ jobs:
             buzzxu/docker-ci:node-taro-18
             ghcr.io/buzzxu/docker-ci:node-taro-18
       - name: 19
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/19/taro/Dockerfile
@@ -124,7 +124,7 @@ jobs:
             buzzxu/docker-ci:node-taro-19
             ghcr.io/buzzxu/docker-ci:node-taro-19
       - name: 20
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: node/20/taro/Dockerfile
