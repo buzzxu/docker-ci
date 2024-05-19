@@ -6,6 +6,7 @@ RUN apt-get update -qq && \
     apt-get upgrade -y && \
     apt-get install -qq -y --no-install-recommends git unzip wget curl openssh-server sshpass rsync ca-certificates python3 build-essential && \
     update-ca-certificates && \
+    npm config set registry http://mirrors.cloud.tencent.com/npm/ && \
     npm i -g node-gyp && \
     npm install -g pnpm && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
