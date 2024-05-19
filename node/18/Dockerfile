@@ -7,6 +7,7 @@ RUN apt-get update -qq && \
     apt-get install -qq -y --no-install-recommends git unzip wget curl openssh-server sshpass rsync ca-certificates python3 build-essential && \
     update-ca-certificates && \
     npm i -g node-gyp && \
+    npm install -g pnpm && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
     yarn global add @tarojs/cli && \
     apt-get clean && \

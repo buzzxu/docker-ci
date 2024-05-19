@@ -73,6 +73,15 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-20
             ghcr.io/buzzxu/docker-ci:node-20
+      - name: latest
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: node/latest/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-latest
+            ghcr.io/buzzxu/docker-ci:node-latest
   node-taro:
     needs: node
     name: Node taro
@@ -132,3 +141,12 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-taro-20
             ghcr.io/buzzxu/docker-ci:node-taro-20
+      - name: latest
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: node/latest/taro/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-taro-latest
+            ghcr.io/buzzxu/docker-ci:node-taro-latest
