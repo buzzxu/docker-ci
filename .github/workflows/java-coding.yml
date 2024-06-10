@@ -9,9 +9,6 @@ on:
   schedule:
     - cron: '30 1 15 * *'
 
-env:
-  namespaces: fucksky-docker.pkg.coding.net/yuanmai/docker
-
 
 jobs:
   stable:
@@ -28,7 +25,7 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
@@ -49,11 +46,11 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'java/21/Dockerfile'
+          docker_file: 'java/21'
           image_version: 'java'
   maven:
     needs: java
@@ -70,11 +67,11 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'maven/21/Dockerfile'
+          docker_file: 'maven/21'
           image_version: 'maven'
   gradle:
     needs: java
@@ -91,9 +88,9 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'gradle/21/Dockerfile'
+          docker_file: 'gradle/21'
           image_version: 'gradle'

@@ -9,9 +9,6 @@ on:
   schedule:
     - cron: '30 1 15 * *'
 
-env:
-  namespaces: fucksky-docker.pkg.coding.net/yuanmai/docker
-
 
 jobs:
   node:
@@ -28,55 +25,55 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/16/Dockerfile'
+          docker_file: 'node/16'
           image_version: 'node'
       - name: node-18
         id: node-18
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/18/Dockerfile'
+          docker_file: 'node/18'
           image_version: 'node-18'
       - name: node-19
         id: node-19
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/19/Dockerfile'
+          docker_file: 'node/19'
           image_version: 'node-19'
       - name: node-20
         id: node-20
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/20/Dockerfile'
+          docker_file: 'node/20'
           image_version: 'node-20'
       - name: node-latest
         id: node-latest
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/latest/Dockerfile'
+          docker_file: 'node/latest'
           image_version: 'node-latest'
   node-taro:
     needs: node
@@ -91,53 +88,53 @@ jobs:
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/16/taro/Dockerfile'
+          docker_file: 'node/16/taro'
           image_version: 'node-taro-16'
       - name: node-taro-18
         id: node-taro-18
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/18/taro/Dockerfile'
+          docker_file: 'node/18/taro'
           image_version: 'node-taro-18'
       - name: node-taro-19
         id: node-taro-19
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/19/taro/Dockerfile'
+          docker_file: 'node/19/taro'
           image_version: 'node-taro-19'
       - name: node-taro-20
         id: node-taro-20
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/20/taro/Dockerfile'
+          docker_file: 'node/20/taro'
           image_version: 'node-taro-20'
       - name: node-taro-latest
         id: node-taro-latest
         uses: risfeng/docker-image-build-push-action@v1.0
         with:
           registry_url: 'fucksky-docker.pkg.coding.net'
-          namespaces: '$namespaces'
+          namespaces: 'fucksky-docker.pkg.coding.net/yuanmai/docker'
           repository_name: 'docker-ci'
           user_name: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-          docker_file: 'node/latest/taro/Dockerfile'
+          docker_file: 'node/latest/taro'
           image_version: 'node-taro-latest'
