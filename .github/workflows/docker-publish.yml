@@ -42,6 +42,7 @@ jobs:
           push: true
           tags: |
             buzzxu/docker-ci:stable
+            ghcr.io/buzzxu/docker-ci:stable
   java:
     needs: stable
     name: Java image

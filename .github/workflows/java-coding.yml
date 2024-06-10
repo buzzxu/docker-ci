@@ -1,0 +1,99 @@
+name:  Java Coding
+
+on:
+  push:
+    branches: [ master ]
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '30 1 15 * *'
+
+env:
+  namespaces: fucksky-docker.pkg.coding.net/yuanmai/docker
+
+
+jobs:
+  stable:
+    name: Stable image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Build Docker Image
+        id: stable
+        uses: risfeng/docker-image-build-push-action@v1.0
+        with:
+          registry_url: 'fucksky-docker.pkg.coding.net'
+          namespaces: '$namespaces'
+          repository_name: 'docker-ci'
+          user_name: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+          docker_file: '.'
+          image_version: 'stable'
+  java:
+    needs: stable
+    name: Java image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: java-21
+        id: java-21
+        uses: risfeng/docker-image-build-push-action@v1.0
+        with:
+          registry_url: 'fucksky-docker.pkg.coding.net'
+          namespaces: '$namespaces'
+          repository_name: 'docker-ci'
+          user_name: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+          docker_file: 'java/21/Dockerfile'
+          image_version: 'java'
+  maven:
+    needs: java
+    name: Maven image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: maven-21
+        id: maven-21
+        uses: risfeng/docker-image-build-push-action@v1.0
+        with:
+          registry_url: 'fucksky-docker.pkg.coding.net'
+          namespaces: '$namespaces'
+          repository_name: 'docker-ci'
+          user_name: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+          docker_file: 'maven/21/Dockerfile'
+          image_version: 'maven'
+  gradle:
+    needs: java
+    name: Gradle image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: gradle-21
+        id: gradle-21
+        uses: risfeng/docker-image-build-push-action@v1.0
+        with:
+          registry_url: 'fucksky-docker.pkg.coding.net'
+          namespaces: '$namespaces'
+          repository_name: 'docker-ci'
+          user_name: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+          docker_file: 'gradle/21/Dockerfile'
+          image_version: 'gradle'
