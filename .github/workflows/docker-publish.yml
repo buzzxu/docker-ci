@@ -129,7 +129,7 @@ jobs:
             buzzxu/docker-ci:maven-21
             ghcr.io/buzzxu/docker-ci:maven-21
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:maven
-            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci::maven-21
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:maven-21
   gradle:
     needs: java
     name: Gradle image
