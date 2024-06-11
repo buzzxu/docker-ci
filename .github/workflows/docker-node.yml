@@ -35,6 +35,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: 16
         uses: docker/build-push-action@v5
         with:
@@ -46,6 +52,8 @@ jobs:
             ghcr.io/buzzxu/docker-ci:node
             buzzxu/docker-ci:node-16
             ghcr.io/buzzxu/docker-ci:node-16
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-16
       - name: 18
         uses: docker/build-push-action@v5
         with:
@@ -55,6 +63,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-18
             ghcr.io/buzzxu/docker-ci:node-18
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-18
       - name: 19
         uses: docker/build-push-action@v5
         with:
@@ -64,6 +73,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-19
             ghcr.io/buzzxu/docker-ci:node-19
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-19
       - name: 20
         uses: docker/build-push-action@v5
         with:
@@ -73,6 +83,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-20
             ghcr.io/buzzxu/docker-ci:node-20
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-20
       - name: latest
         uses: docker/build-push-action@v5
         with:
@@ -82,6 +93,10 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-latest
             ghcr.io/buzzxu/docker-ci:node-latest
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-latest
+            buzzxu/docker-ci:node-22
+            ghcr.io/buzzxu/docker-ci:node-22
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-22
   node-taro:
     needs: node
     name: Node taro
@@ -103,6 +118,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: 16
         uses: docker/build-push-action@v5
         with:
@@ -114,6 +135,8 @@ jobs:
             ghcr.io/buzzxu/docker-ci:node-taro
             buzzxu/docker-ci:node-taro-16
             ghcr.io/buzzxu/docker-ci:node-taro-16
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-16
       - name: 18
         uses: docker/build-push-action@v5
         with:
@@ -123,6 +146,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-taro-18
             ghcr.io/buzzxu/docker-ci:node-taro-18
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-18
       - name: 19
         uses: docker/build-push-action@v5
         with:
@@ -132,6 +156,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-taro-19
             ghcr.io/buzzxu/docker-ci:node-taro-19
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-19
       - name: 20
         uses: docker/build-push-action@v5
         with:
@@ -141,6 +166,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-taro-20
             ghcr.io/buzzxu/docker-ci:node-taro-20
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-20
       - name: latest
         uses: docker/build-push-action@v5
         with:
@@ -150,3 +176,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:node-taro-latest
             ghcr.io/buzzxu/docker-ci:node-taro-latest
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-latest
+            buzzxu/docker-ci:node-taro-22
+            ghcr.io/buzzxu/docker-ci:node-taro-22
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-taro-22

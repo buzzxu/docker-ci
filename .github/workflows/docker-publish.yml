@@ -35,6 +35,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: Push to Docker Hub
         uses: docker/build-push-action@v5
         with:
@@ -43,6 +49,7 @@ jobs:
           tags: |
             buzzxu/docker-ci:stable
             ghcr.io/buzzxu/docker-ci:stable
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:stable
   java:
     needs: stable
     name: Java image
@@ -64,6 +71,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: 21
         uses: docker/build-push-action@v5
         with:
@@ -75,6 +88,8 @@ jobs:
             ghcr.io/buzzxu/docker-ci:java
             buzzxu/docker-ci:java-21
             ghcr.io/buzzxu/docker-ci:java-21
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:java
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:java-21
   maven:
     needs: java
     name: Maven image
@@ -96,6 +111,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: 21
         uses: docker/build-push-action@v5
         with:
@@ -107,6 +128,8 @@ jobs:
             ghcr.io/buzzxu/docker-ci:maven
             buzzxu/docker-ci:maven-21
             ghcr.io/buzzxu/docker-ci:maven-21
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:maven
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci::maven-21
   gradle:
     needs: java
     name: Gradle image
@@ -128,6 +151,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
       - name: 21
         uses: docker/build-push-action@v5
         with:
@@ -139,3 +168,5 @@ jobs:
             ghcr.io/buzzxu/docker-ci:gradle
             buzzxu/docker-ci:gradle-21
             ghcr.io/buzzxu/docker-ci:gradle-21
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:gradle
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:gradle-21
