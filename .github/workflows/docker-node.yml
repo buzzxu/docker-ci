@@ -16,7 +16,7 @@ env:
 
 jobs:
   node:
-    name: Node image
+    name: Node latest
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -56,7 +56,7 @@ jobs:
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-22
   
   node-20:
-    name: Node image
+    name: Node 20
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -92,7 +92,7 @@ jobs:
             ghcr.io/buzzxu/docker-ci:node-20
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-20
   node-16:
-    name: Node image
+    name: Node 16
     runs-on: ubuntu-latest
     permissions:
       packages: write
