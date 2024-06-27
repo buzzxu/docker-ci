@@ -48,11 +48,8 @@ jobs:
           file: node/16/Dockerfile
           push: true
           tags: |
-            buzzxu/docker-ci:node
-            ghcr.io/buzzxu/docker-ci:node
             buzzxu/docker-ci:node-16
             ghcr.io/buzzxu/docker-ci:node-16
-            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-16
       - name: 18
         uses: docker/build-push-action@v5
@@ -91,9 +88,9 @@ jobs:
           file: node/latest/Dockerfile
           push: true
           tags: |
-            buzzxu/docker-ci:node-latest
-            ghcr.io/buzzxu/docker-ci:node-latest
-            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-latest
+            buzzxu/docker-ci:node
+            ghcr.io/buzzxu/docker-ci:node
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node
             buzzxu/docker-ci:node-22
             ghcr.io/buzzxu/docker-ci:node-22
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-22
