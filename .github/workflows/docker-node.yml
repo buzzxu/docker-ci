@@ -117,7 +117,7 @@ jobs:
           registry: fucksky-docker.pkg.coding.net
           username: ${{ secrets.CODING_USERNAME }}
           password: ${{ secrets.CODING_PASSWORD }}
-      - name: 16
+      - name: 18
         uses: docker/build-push-action@v5
         with:
           context: .
