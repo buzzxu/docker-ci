@@ -51,10 +51,81 @@ jobs:
             buzzxu/docker-ci:node
             ghcr.io/buzzxu/docker-ci:node
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node
+            buzzxu/docker-ci:node
+            ghcr.io/buzzxu/docker-ci:node
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node
+  node-23:
+    name: Node 23
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+      - name: 20
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: node/23/Dockerfile
+          push: true
+          tags: |
+            buzzxu/docker-ci:node-23
+            ghcr.io/buzzxu/docker-ci:node-23
+            fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-23
+  node-22:
+    name: Node 22
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to GitHub Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Coding
+        uses: docker/login-action@v3
+        with:
+          registry: fucksky-docker.pkg.coding.net
+          username: ${{ secrets.CODING_USERNAME }}
+          password: ${{ secrets.CODING_PASSWORD }}
+      - name: 20
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: node/22/Dockerfile
+          push: true
+          tags: |
             buzzxu/docker-ci:node-22
             ghcr.io/buzzxu/docker-ci:node-22
             fucksky-docker.pkg.coding.net/yuanmai/docker/docker-ci:node-22
-  
   node-20:
     name: Node 20
     runs-on: ubuntu-latest
