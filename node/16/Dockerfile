@@ -8,10 +8,7 @@ RUN apt-get update -qq && \
     update-ca-certificates && \
     npm config set registry https://registry.npmmirror.com && \
     npm i -g node-gyp && \
-    npm install cnpm -g --registry=https://registry.npmmirror.com && \
-    yarn config set registry https://registry.npmmirror.com && \
-    yarn config list && \
-    yarn global add @tarojs/cli && \
+    npm install -g @tarojs/cli && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* 
