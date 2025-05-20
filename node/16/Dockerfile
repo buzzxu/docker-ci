@@ -8,7 +8,6 @@ RUN apt-get update -qq && \
     update-ca-certificates && \
     npm config set registry https://registry.npmmirror.com && \
     npm i -g node-gyp && \
-    npm install -g pnpm && \
     npm install cnpm -g --registry=https://registry.npmmirror.com && \
     yarn config set registry https://registry.npmmirror.com && \
     yarn config list && \
